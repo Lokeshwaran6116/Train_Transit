@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:train_transit/components/my_button.dart';
 import 'package:train_transit/components/my_textfield.dart';
+import 'package:train_transit/pages/user_type.dart'; // Import the UserType page
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
+  void signUserIn(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const UserType()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,6 @@ class LoginPage extends StatelessWidget {
 
               const SizedBox(height: 50),
 
-              // welcome back, you've been missed!
               Text(
                 'Login Page',
                 style: TextStyle(
@@ -72,7 +75,8 @@ class LoginPage extends StatelessWidget {
 
               // sign in button
               MyButton(
-                onTap: signUserIn,
+                onTap: () => signUserIn(context),
+                text: 'Sign In',
               ),
 
               const SizedBox(height: 50),
