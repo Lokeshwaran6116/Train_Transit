@@ -59,17 +59,17 @@ class _CustomDropdownState extends State<CustomDropdown> {
                     widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
                 suffixIcon:
                     widget.suffixIcon != null ? Icon(widget.suffixIcon) : null,
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blue),
                 ),
               ),
             );
           },
         ),
-        SizedBox(height: 20), // Adjust the spacing between dropdown boxes
+        const SizedBox(height: 20), // Adjust the spacing between dropdown boxes
       ],
     );
   }

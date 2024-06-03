@@ -66,12 +66,12 @@ class BookingPage extends StatelessWidget {
               CustomDropdown(
                 controller: classController,
                 options: classOptions,
-                label: 'Classes(Optional)',
+                label: 'Classes',
               ),
               CustomDropdown(
                 controller: generalController,
                 options: generalOptions,
-                label: 'General(Optional)',
+                label: 'General',
               ),
             ],
           ),
