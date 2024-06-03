@@ -4,6 +4,7 @@ import 'package:train_transit/pages/booking_page.dart';
 import 'package:train_transit/pages/tracking_page.dart';
 import 'package:train_transit/components/my_button.dart';
 
+
 class UserType extends StatelessWidget {
   const UserType({super.key});
 

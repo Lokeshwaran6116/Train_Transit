@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:train_transit/components/date_picker.dart';
+import 'package:train_transit/components/loc.dart';
 
-class BookingPage extends StatefulWidget {
-  const BookingPage({super.key});
-
-  @override
-  BookingPageState createState() => BookingPageState();
-}
-
-class BookingPageState extends State<BookingPage> {
-  final TextEditingController dateController = TextEditingController();
+class BookingPage extends StatelessWidget {
+  const BookingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController dateController = TextEditingController();
+
+    // Sample list of train stations in India
+    List<String> trainStations = [
+      'New Delhi',
+      'Mumbai',
+      'Chennai',
+      'Kolkata',
+      'Bangalore',
+      'Hyderabad',
+      'Ahmedabad',
+      'Pune',
+      'Jaipur',
+      'Lucknow',
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Booking'),
@@ -20,39 +30,26 @@ class BookingPageState extends State<BookingPage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(30),
-          child: TextField(
-            controller: dateController,
-            decoration: const InputDecoration(
-              labelText: 'DATE',
-              filled: true,
-              prefixIcon: Icon(Icons.calendar_today),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 10),
+              CustomDatePicker(controller: dateController),
+              const SizedBox(height: 20),
+              StationDropdown(
+                controller: TextEditingController(),
+                options: trainStations,
+                label: 'From',
               ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue),
+              StationDropdown(
+                controller: TextEditingController(),
+                options: trainStations,
+                label: 'To',
               ),
-            ),
-            readOnly: true,
-            onTap: selectDate,
+            ],
           ),
         ),
       ),
     );
-  }
-
-  Future<void> selectDate() async {
-    DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
-
-    if (picked != null) {
-      setState(() {
-        dateController.text = DateFormat('dd-MM-yyyy').format(picked);
-      });
-    }
   }
 }
