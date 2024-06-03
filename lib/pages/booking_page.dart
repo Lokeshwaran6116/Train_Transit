@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:train_transit/components/date_picker.dart';
-import 'package:train_transit/components/loc.dart';
+import 'package:train_transit/components/loc_book.dart';
 
 class BookingPage extends StatelessWidget {
   const BookingPage({Key? key}) : super(key: key);
@@ -8,6 +8,10 @@ class BookingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController dateController = TextEditingController();
+    TextEditingController fromController = TextEditingController();
+    TextEditingController toController = TextEditingController();
+    TextEditingController classController = TextEditingController();
+    TextEditingController generalController = TextEditingController();
 
     // Sample list of train stations in India
     List<String> trainStations = [
@@ -21,6 +25,19 @@ class BookingPage extends StatelessWidget {
       'Pune',
       'Jaipur',
       'Lucknow',
+    ];
+    List<String> classOptions = [
+      'AC First Class (1A)',
+      'AC 2 Tier (2A)',
+      'First Class (FC)',
+      'AC 3 Tier (3A)',
+    ];
+
+    List<String> generalOptions = [
+      'Ladies',
+      'Duty Pass',
+      'Tatkal',
+      'Premium Tatkal',
     ];
 
     return Scaffold(
@@ -36,15 +53,25 @@ class BookingPage extends StatelessWidget {
               const SizedBox(height: 10),
               CustomDatePicker(controller: dateController),
               const SizedBox(height: 20),
-              StationDropdown(
-                controller: TextEditingController(),
+              CustomDropdown(
+                controller: fromController,
                 options: trainStations,
                 label: 'From',
               ),
-              StationDropdown(
-                controller: TextEditingController(),
+              CustomDropdown(
+                controller: toController,
                 options: trainStations,
                 label: 'To',
+              ),
+              CustomDropdown(
+                controller: classController,
+                options: classOptions,
+                label: 'Classes(Optional)',
+              ),
+              CustomDropdown(
+                controller: generalController,
+                options: generalOptions,
+                label: 'General(Optional)',
               ),
             ],
           ),

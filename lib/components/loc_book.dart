@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 
-class StationDropdown extends StatefulWidget {
+class CustomDropdown extends StatefulWidget {
   final TextEditingController controller;
   final List<String> options;
   final void Function(String?)? onSelected;
   final String label;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
 
-  const StationDropdown({
+  const CustomDropdown({
     Key? key,
     required this.controller,
     required this.options,
     required this.label,
     this.onSelected,
+    this.prefixIcon,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
-  _StationDropdownState createState() => _StationDropdownState();
+  _CustomDropdownState createState() => _CustomDropdownState();
 }
 
-class _StationDropdownState extends State<StationDropdown> {
+class _CustomDropdownState extends State<CustomDropdown> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,7 +31,9 @@ class _StationDropdownState extends State<StationDropdown> {
         Autocomplete<String>(
           optionsBuilder: (TextEditingValue textEditingValue) {
             return widget.options.where((String option) {
-              return option.toLowerCase().contains(textEditingValue.text.toLowerCase());
+              return option
+                  .toLowerCase()
+                  .contains(textEditingValue.text.toLowerCase());
             });
           },
           onSelected: (String? selected) {
@@ -38,7 +44,10 @@ class _StationDropdownState extends State<StationDropdown> {
               }
             });
           },
-          fieldViewBuilder: (BuildContext context, TextEditingController fieldController, FocusNode fieldFocusNode, void Function() onFieldSubmitted) {
+          fieldViewBuilder: (BuildContext context,
+              TextEditingController fieldController,
+              FocusNode fieldFocusNode,
+              void Function() onFieldSubmitted) {
             return TextFormField(
               controller: fieldController,
               focusNode: fieldFocusNode,
@@ -46,7 +55,10 @@ class _StationDropdownState extends State<StationDropdown> {
               decoration: InputDecoration(
                 labelText: widget.label,
                 filled: true,
-                prefixIcon: Icon(Icons.search),
+                prefixIcon:
+                    widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
+                suffixIcon:
+                    widget.suffixIcon != null ? Icon(widget.suffixIcon) : null,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
