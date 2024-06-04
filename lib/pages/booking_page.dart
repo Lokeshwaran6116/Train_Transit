@@ -6,10 +6,10 @@ class BookingPage extends StatefulWidget {
   const BookingPage({Key? key}) : super(key: key);
 
   @override
-  _BookingPageState createState() => _BookingPageState();
+  BookingPageState createState() => BookingPageState();
 }
 
-class _BookingPageState extends State<BookingPage> {
+class BookingPageState extends State<BookingPage> {
   TextEditingController dateController = TextEditingController();
   TextEditingController fromController = TextEditingController();
   TextEditingController toController = TextEditingController();
