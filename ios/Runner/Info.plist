@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+    <!-- Add location usage descriptions -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to show your position on the map during the train journey.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We need your location to provide continuous tracking during the train journey.</string>
 </dict>
 </plist>

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:train_transit/pages/delivery_page.dart';
 import 'package:train_transit/pages/booking_page.dart';
-import 'package:train_transit/pages/tracking_page.dart';
+import 'package:train_transit/pages/tracking_page.dart'; // Import the new page
 import 'package:train_transit/components/my_button.dart';
-
 
 class UserType extends StatelessWidget {
   const UserType({super.key});
@@ -43,7 +42,7 @@ class UserType extends StatelessWidget {
 
               // Delivery button
               MyButton(
-                onTap: () => navigateToPage(context, const DeliveryPage()),
+                onTap: () => navigateToPage(context, DeliveryPage()), // Remove `const`
                 text: 'Delivery',
               ),
 
@@ -51,7 +50,7 @@ class UserType extends StatelessWidget {
 
               // Booking button
               MyButton(
-                onTap: () => navigateToPage(context, const BookingPage()),
+                onTap: () => navigateToPage(context, BookingPage()), // Remove `const`
                 text: 'Booking',
               ),
 
@@ -59,7 +58,7 @@ class UserType extends StatelessWidget {
 
               // Tracking button
               MyButton(
-                onTap: () => navigateToPage(context, const TrackingPage()),
+                onTap: () => navigateToPage(context, TrackingPage()), // Remove `const`
                 text: 'Tracking',
               ),
             ],

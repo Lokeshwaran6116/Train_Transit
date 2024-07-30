@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:train_transit/components/loc_book.dart';
 import 'package:intl/intl.dart';
+import 'package:train_transit/components/loc_book.dart';
+import 'package:train_transit/pages/passenger_details_page.dart';
 
 class DeliveryPage extends StatefulWidget {
-  const DeliveryPage({super.key});
+  const DeliveryPage({Key? key}) : super(key: key);
 
   @override
   _DeliveryPageState createState() => _DeliveryPageState();
@@ -15,18 +16,15 @@ class _DeliveryPageState extends State<DeliveryPage> {
   TextEditingController fromController = TextEditingController();
   TextEditingController toController = TextEditingController();
 
-  // Sample list of train stations in India
+  // List of train stations between Chennai and Madurai
   List<String> trainStations = [
-    'New Delhi',
-    'Mumbai',
-    'Chennai',
-    'Kolkata',
-    'Bangalore',
-    'Hyderabad',
-    'Ahmedabad',
-    'Pune',
-    'Jaipur',
-    'Lucknow',
+    'Chennai Egmore',
+    'Tambaram',
+    'Chengalpattu Junction',
+    'Villupuram Junction',
+    'Tiruchirappalli Junction',
+    'Dindigul Junction',
+    'Madurai Junction',
   ];
 
   @override
@@ -74,8 +72,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey,
                   foregroundColor: Colors.white, // Change the text color here
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   textStyle: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -113,6 +110,40 @@ class _DeliveryPageState extends State<DeliveryPage> {
               controller: toController,
               options: trainStations,
               label: 'To',
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  if (start != null && end != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PassengerDetailsPage(
+                          startDate: start!,
+                          endDate: end!,
+                          fromStation: fromController.text.trim(),
+                          toStation: toController.text.trim(),
+                        ),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Please select a date range')),
+                    );
+                  }
+                },
+                child: const Text("Search Passengers"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
           ],
         ),

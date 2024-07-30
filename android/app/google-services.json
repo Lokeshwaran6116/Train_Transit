@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25958846946",
+    "project_id": "train-transit-backend",
+    "storage_bucket": "train-transit-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25958846946:android:1be3562f4f22060f4129bb",
+        "android_client_info": {
+          "package_name": "com.example.train_transit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhxSNHlJUgcpdiv3M4XrOMy8LVdNPGoys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
